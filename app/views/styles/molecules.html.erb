@@ -37,16 +37,10 @@
   <section class="sg-section" id="logo">
     <h2>02. Logo</h2>
     <h3>Default logo</h3>
-    <div class="logo">
-      <a href="/"><span><i>My</i> Bucket List</span></a>
-    </div>
+    <%= render(partial: 'logo') %>
     <h3>Negative logo</h3>
     <p>Used on dark background, like in the site footer.</p>
-    <div class="sg-dark-bg">
-      <div class="logo logo--inverted footer__logo">
-        <a href="/"><span><i>My</i> Bucket List</span></a>
-      </div>
-    </div>
+    <%= render(partial: 'negative_logo') %>
   </section>
   <section class="sg-section" id="search">
     <h2>03. Search</h2>
