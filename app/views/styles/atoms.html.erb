@@ -159,16 +159,16 @@
     <h3 class="beta">03. Buttons</h3>
     <h4>Default button</h4>
     <div>
-      <%= render(partial: 'button', locals: { label: 'Button', type: 'button'}) %>
-      <%= render(partial: 'button', locals: { label: 'Link Button', type: 'button'}) %>
+      <%= render(partial: 'button', locals: { label: 'Button' }) %>
+      <%= render(partial: 'link_button', locals: { label: 'Link Button' }) %>
     </div>
     <h4>Primary button</h4>
     <div>
-      <%= render(partial: 'button', locals: { label: 'Primary Button', type: 'button'}) %>
+      <%= render(partial: 'primary_button', locals: { label: 'Primary Button' }) %>
     </div>
     <h4>Negative button</h4>
     <div>
-      <%= render(partial: 'button', locals: { label: 'Warning Button', type: 'button'}) %>
+      <%= render(partial: 'negative_button', locals: { label: 'Warning Button' }) %>
     </div>
   </section>
   <section class="sg-section" id="forms">
