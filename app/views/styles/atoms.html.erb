@@ -6,13 +6,13 @@
     </p>
     <nav>
       <ul class="sub-navigation">
-        <% [['Atoms', '/styles/atoms'],
-             ['Molecules', '/styles/molecules'],
-             ['Organisms', '/styles/organisms'],
-             ['Templates', '#templates'],
-             ['Pages', '#pages'],
+        <% [['Atoms', '/styles/atoms', true],
+             ['Molecules', '/styles/molecules', false],
+             ['Organisms', '/styles/organisms', false],
+             ['Templates', '#templates', false],
+             ['Pages', '#pages', false],
            ].each do |item| %>
-          <%= render(partial: 'secondary_navigation', locals: { title: item[0], uri: item[1] }) %>
+          <%= render(partial: 'secondary_navigation', locals: { title: item[0], uri: item[1], current: item[2] }) %>
         <% end %>
       </ul>
     </nav>
