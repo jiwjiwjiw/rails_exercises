@@ -8,7 +8,7 @@
              ['Templates', '#templates', false],
              ['Pages', '#pages', false],
            ].each do |item| %>
-          <%= render(partial: 'secondary_navigation', locals: { title: item[0], uri: item[1], current: item[2] }) %>
+          <%= render(partial: 'sub_nav_item', locals: { title: item[0], uri: item[1], current: item[2] }) %>
         <% end %>
       </ul>
     </nav>
