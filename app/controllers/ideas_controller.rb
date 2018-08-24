@@ -8,5 +8,6 @@ class IdeasController < ApplicationController
   end
 
   def create
+    redirect_to(ideas_index_path)
   end
 end
