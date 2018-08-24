@@ -4,11 +4,9 @@
   </div>
   <div class="content-wrapper">
     <ul class="bare-list float-grid css-grid">
-      <% ['See the northern lights',
-          'Swim with dolphins',
-          'Learn to bake cupcakes'].each do |name| %>
+      <% @ideas.each do |idea| %>
         <li>
-          <%= render(partial: 'idea_card', locals: {title: name}) %>
+          <%= render(partial: 'idea_card', locals: {title: idea.title}) %>
         </li>
       <% end %>
     </ul>
