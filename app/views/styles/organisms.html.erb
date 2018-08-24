@@ -59,7 +59,7 @@
     <div>
       <ul class="bare-list float-grid css-grid">
         <% ['See the northern lights', 'Swim with dolphins', 'Shake hands with the president', 'Learn to bake cupcakes'].each do |item| %>
-          <li> <%= render(partial: 'idea_card', locals: { title: item })  %></li>
+          <li> <%= render(partial: 'idea_card', locals: { title: item, editable: false })  %></li>
         <% end %>
       </ul>
     </div>
