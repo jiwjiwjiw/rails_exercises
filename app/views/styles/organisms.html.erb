@@ -2,11 +2,14 @@
   <div>
     <nav>
       <ul class="sub-navigation">
-        <li><%= link_to('Atoms', '/styles/atoms') %></li>
-        <li><%= link_to('Molecules', '/styles/molecules') %></li>
-        <li><a href="organisms.html" class="current">Organisms</a></li>
-        <li><a href="#templates">Templates</a></li>
-        <li><a href="#pages">Pages</a></li>
+        <% [['Atoms', '/styles/atoms'],
+             ['Molecules', '/styles/molecules'],
+             ['Organisms', '/styles/organisms'],
+             ['Templates', '#templates'],
+             ['Pages', '#pages'],
+           ].each do |item| %>
+          <%= render(partial: 'secondary_navigation', locals: { title: item[0], uri: item[1] }) %>
+        <% end %>
       </ul>
     </nav>
     <h1>Organisms</h1>
