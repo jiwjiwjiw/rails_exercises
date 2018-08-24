@@ -20,7 +20,7 @@
               <label class="input-group__label sr-only" for="global-search-input">Looking for inspiration?</label>
               <div class="input-row">
                 <%= text_field_tag('q', 'e.g. Swimming with dolphins', class: 'input-row__field') %>
-                <button class="btn btn--inline btn--primary" type="submit">Search</button>
+                <%= button_tag('Search', class: 'btn btn--inline btn--primary') %>
               </div>
             </div>
           <% end %>
