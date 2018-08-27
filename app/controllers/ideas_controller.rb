@@ -16,4 +16,10 @@ class IdeasController < ApplicationController
     idea.save!
     redirect_to(ideas_index_path)
   end
+
+  def edit
+  end
+
+  def update
+  end 
 end
