@@ -19,7 +19,6 @@ class IdeasController < ApplicationController
 
   def edit
     @idea = Idea.find(params[:id])
-    logger.info("EDIT IDEA #{@idea.id}")
   end
 
   def update
