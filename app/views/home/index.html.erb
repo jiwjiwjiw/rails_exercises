@@ -17,7 +17,7 @@
     <h2>Some ideas</h2>
     <ul class="bare-list float-grid css-grid">
       <% ['See the northern lights', 'Swim with dolphins', 'Shake hands with the president', 'Learn to bake cupcakes'].each do |item| %>
-      <li><%= render(partial: 'idea_card', locals: { title: item, editable: false, done_count: 12 }) %></li>
+      <li><%= render(partial: 'idea_card', locals: { title: item, editable: false, done_count: 12, photo_url: "northern-lights-big.jpg" }) %></li>
       <% end %>
     </ul>
   </div>

@@ -12,6 +12,7 @@ class IdeasController < ApplicationController
     idea = Idea.new
     idea.title = params[:title]
     idea.done_count = params[:done_count]
+    idea.photo_url = params[:photo_url]
     idea.save!
     redirect_to(ideas_index_path)
   end
