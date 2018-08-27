@@ -58,8 +58,23 @@
     <h2>02. Ideas</h2>
     <div>
       <ul class="bare-list float-grid css-grid">
-        <% ['See the northern lights', 'Swim with dolphins', 'Shake hands with the president', 'Learn to bake cupcakes'].each do |item| %>
-          <li> <%= render(partial: 'idea_card', locals: { title: item, editable: false, done_count: 282, photo_url: "northern-lights-big.jpg" })  %></li>
+        <%
+          ideas = [
+            Idea.new( title: 'See the northern lights',
+                      done_count: 3,
+                      photo_url: 'http://fpoimg.com/255x170'),
+            Idea.new( title: 'Swim with dolphins',
+                    done_count: 3,
+                    photo_url: 'http://fpoimg.com/255x170'),
+            Idea.new( title: 'Shake hands with the president',
+                    done_count: 3,
+                    photo_url: 'http://fpoimg.com/255x170'),
+            Idea.new( title: 'Learn to bake cupcakes',
+                    done_count: 3,
+                    photo_url: 'http://fpoimg.com/255x170')
+          ]
+          ideas.each do |idea| %>
+          <li><%= render(partial: 'idea_card', locals: { idea: idea, editable: false }) %></li>
         <% end %>
       </ul>
     </div>

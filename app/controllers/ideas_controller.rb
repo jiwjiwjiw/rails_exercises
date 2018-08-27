@@ -18,8 +18,10 @@ class IdeasController < ApplicationController
   end
 
   def edit
+    @idea = Idea.find(params[:id])
+    logger.info("EDIT IDEA #{@idea.id}")
   end
 
   def update
-  end 
+  end
 end

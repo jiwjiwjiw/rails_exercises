@@ -35,7 +35,12 @@
   </div>
   <section class="sg-section" id="card">
     <h2>01. Card</h2>
-    <%= render(partial: 'idea_card', locals: { title: 'See the northern lights', editable: false, done_count: 798, photo_url: "northern-lights-big.jpg" }) %>
+    <%= render( partial: 'idea_card',
+                locals: { idea: Idea.new(
+                            title: 'See the northern lights',
+                            done_count: 3,
+                            photo_url: 'http://fpoimg.com/255x170'),
+                          editable: false }) %>
   </section>
   <section class="sg-section" id="logo">
     <h2>02. Logo</h2>
