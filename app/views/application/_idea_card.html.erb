@@ -2,8 +2,8 @@
   <div class="card__thumb">
     <a href="#">
       <%
-        if(!photo_url)
-          photo_url = 'turtle-big.jpg'
+        if(photo_url.nil?)
+          photo_url = 'http://fpoimg.com/255x170'
         end
       %>
       <%= image_tag(photo_url)%>
