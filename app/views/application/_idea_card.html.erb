@@ -16,26 +16,26 @@
     <% if editable %>
       <button class="btn delta" type="submit">
         <svg class="icon-delete" role="presentation">
-          <use xlink:href="images/icons/icons-defs.svg#delete"></use>
+          <use xlink:href="<%= asset_url("icons/icons-defs.svg" + "#delete") %>"</use>
         </svg>
         Delete
       </button>
       <a class="btn delta" href="<%= edit_idea_path(idea) %>">
         <svg class="icon-edit" role="presentation">
-          <use xlink:href="images/icons/icons-defs.svg#edit"></use>
+          <use xlink:href="<%= asset_url("icons/icons-defs.svg" + "#edit") %>"</use>
         </svg>
         Edit
       </a>
     <% else %>
       <button class="card__btn card__like delta" data-like="see-the-northern-lights">
         <svg class="icon-heart icon-heart--liked" role="presentation">
-          <use xlink:href="images/icons/icons-defs.svg#heart"></use>
+          <use xlink:href="<%= asset_url("icons/icons-defs.svg" + "#heart") %>"</use>
         </svg>
         Like
       </button>
       <button class="card__btn card__add delta" data-addGoal="see-the-northern-lights">
         <svg class="icon-pluss" role="presentation">
-          <use xlink:href="images/icons/icons-defs.svg#pluss"></use>
+          <use xlink:href="<%= asset_url("icons/icons-defs.svg" + "#pluss") %>"</use>
         </svg>
         Add Goal
       </button>
