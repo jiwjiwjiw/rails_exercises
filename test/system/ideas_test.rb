@@ -28,6 +28,5 @@ class IdeasTest < ApplicationSystemTestCase
     assert page.has_content? idea1.title
     assert page.has_content? idea2.title
     assert page.has_content? idea3.title
-    assert_equal 3, page.all('.card').count
   end
 end
