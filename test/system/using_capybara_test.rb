@@ -13,8 +13,20 @@ class CapybaraTest < ApplicationSystemTestCase
     click_on('Wikipédia', match: :first)
     sleep(3.seconds)
     click_on('Riviera', match: :first)
-    sleep(3.seconds)
-    click_on('Guides')
-    sleep(20.seconds)
+    sleep(5.seconds)
   end
+
+  test 'we can use capybara' do
+    visit('https://en.wikipedia.org/wiki/Internet')
+    sleep(3.seconds)
+    fill_in('searchInput', with: 'Ruby programming language')
+    sleep(3.seconds)
+    click_on('searchButton', match: :first)
+    sleep(3.seconds)
+    click_on('Examples', match: :first)
+    sleep(3.seconds)
+    click_on('Hello world', match: :first)
+    sleep(5.seconds)
+  end
+
 end
