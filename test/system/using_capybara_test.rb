@@ -6,11 +6,14 @@ class CapybaraTest < ApplicationSystemTestCase
   test 'capybara works' do
     visit('http://www.google.com')
     sleep(5.seconds)
-    fill_in('q', with: 'Ruby on Rails')
-    sleep(5.seconds)
+    fill_in('q', with: 'Cinque Terre')
+    sleep(3.seconds)
     click_on('Recherche Google', match: :first)
-    click_on('Ruby on Rails', match: :first)
-    sleep(5.seconds)
+    sleep(3.seconds)
+    click_on('Wikipédia', match: :first)
+    sleep(3.seconds)
+    click_on('Riviera', match: :first)
+    sleep(3.seconds)
     click_on('Guides')
     sleep(20.seconds)
   end
