@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   patch 'ideas/:id', to: 'ideas#update', as: 'idea'
 
+  get 'ideas/:id', to: 'ideas#show', as: 'show_idea'
+
   get 'account/ideas'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

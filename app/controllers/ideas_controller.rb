@@ -21,6 +21,10 @@ class IdeasController < ApplicationController
     @idea = Idea.find(params[:id])
   end
 
+  def show
+    @idea = Idea.find(params[:id])
+  end
+
   def update
     idea = Idea.find(params[:id])
     idea.title = params[:title]
