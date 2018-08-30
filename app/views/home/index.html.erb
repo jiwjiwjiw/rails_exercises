@@ -16,22 +16,7 @@
   <div class="content-wrapper">
     <h2>Some ideas</h2>
     <ul class="bare-list float-grid css-grid">
-      <%
-        ideas = [
-          Idea.new( title: 'See the northern lights',
-                    done_count: 3,
-                    photo_url: 'http://fpoimg.com/255x170'),
-          Idea.new( title: 'Swim with dolphins',
-                  done_count: 3,
-                  photo_url: 'http://fpoimg.com/255x170'),
-          Idea.new( title: 'Shake hands with the president',
-                  done_count: 3,
-                  photo_url: 'http://fpoimg.com/255x170'),
-          Idea.new( title: 'Learn to bake cupcakes',
-                  done_count: 3,
-                  photo_url: 'http://fpoimg.com/255x170')
-        ]
-        ideas.each do |idea| %>
+      <% @ideas.each do |idea| %>
         <li><%= render(partial: 'idea_card', locals: { idea: idea, editable: false }) %></li>
       <% end %>
     </ul>

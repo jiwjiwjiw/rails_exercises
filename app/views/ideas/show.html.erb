@@ -35,7 +35,7 @@
             </p>
           </div>
           <div class="goal__meta">
-            <span>Created on <%= @idea.created_at.strftime("%d %b '%y") %></span>
+            <span>Created on <time datetime="2017-08-27T03:48"><%= @idea.created_at.strftime("%d %b '%y") %></time></span>
             <span><%= @idea.done_count %> have done this</span>
             <span><a href="#comments">3 comments</a></span>
           </div>

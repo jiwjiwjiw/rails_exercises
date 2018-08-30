@@ -12,15 +12,15 @@ class SimpleNavigationsTest < ApplicationSystemTestCase
    test 'style guide navigation' do
      visit('/')
      click_on('Style Guide', match: :first)
-     assert page.current_url == 'http://localhost:3000/styles/atoms'
+     assert current_path == styles_atoms_path
      assert page.has_content?('Atoms')
      assert page.has_content?('Molecules')
      assert page.has_content?('Organisms')
      click_on('Molecules', match: :first)
-     assert page.current_url == styles_molecules_path
+     assert current_path == styles_molecules_path
      assert page.has_content?('Card')
      click_on('My Bucket List', match: :first)
-     assert current_url == root_path
-     click_on('My Ideas', match: :first)
+     assert current_path == root_path
+#     click_on('My Ideas', match: :first)
    end
  end
