@@ -2,11 +2,11 @@
   <div class="card__thumb">
     <%= link_to(show_idea_path(idea)) do%>
       <%= render(partial: 'idea_photo', locals: { photo_url: idea.photo_url, alt_text: 'Image representing the idea'}) %>
+      <div class="card__intro">
+        <h4 class="card__title"><%= idea.title %></h4>
+        <span><%= idea.done_count %> have done this</span>
+      </div>
     <% end %>
-    <div class="card__intro">
-      <h4 class="card__title"><%= idea.title %></h4>
-      <span><%= idea.done_count %> have done this</span>
-    </div>
   </div>
   <div class="card__footer">
     <% if editable %>
