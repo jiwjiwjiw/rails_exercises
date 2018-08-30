@@ -29,4 +29,19 @@ class IdeasTest < ApplicationSystemTestCase
     assert page.has_content? idea2.title
     assert page.has_content? idea3.title
   end
+
+  test 'search' do
+    idea = Idea.new
+    idea.title = 'Climb Mont Blanc'
+    idea.save!
+    idea = Idea.new
+    idea.title = 'Visit Niagara Falls'
+    idea.save!
+    visit '/'
+    fill_in 'q', with: 'Mont'
+    click_on 'Search', match: :first
+    assert current_path, ideas_index_path
+    assert page.has_content? 'Climb Mont Blanc'
+    refute page.has_content? 'Visit Niagara Falls'
+  end
 end
