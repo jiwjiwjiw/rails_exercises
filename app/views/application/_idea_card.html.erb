@@ -1,11 +1,7 @@
 <div class="card">
   <div class="card__thumb">
     <a href="#">
-      <% if(idea.photo_url.nil?) %>
-          <%= image_tag('http://fpoimg.com/255x170')%>
-      <% else %>
-        <%= image_tag(idea.photo_url)%>
-      <% end %>
+      <%= render(partial: 'idea_photo', locals: { photo_url: idea.photo_url, alt_text: 'Image representing the idea'}) %>
     </a>
     <div class="card__intro">
       <h4 class="card__title"><%= idea.title %></h4>

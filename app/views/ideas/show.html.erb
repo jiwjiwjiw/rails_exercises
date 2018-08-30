@@ -2,7 +2,7 @@
   <div class="content-wrapper hr">
     <div class="media">
       <div class="media__figure">
-        <img src="images/turtle-big.jpg" alt="Underwater photo of turtle" />
+        <%= render(partial: 'idea_photo', locals: { photo_url: @idea.photo_url, alt_text: 'Image representing the idea'}) %>
       </div>
       <div class="media__body">
         <div class="goal">
