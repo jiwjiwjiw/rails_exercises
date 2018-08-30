@@ -7,7 +7,7 @@
       <div class="media__body">
         <div class="goal">
           <div class="goal__owner">
-            <img class="avatar" src="#images/avatar.png" alt="Portrait of Frederick Rose">
+            <%= image_tag('avatar.png', alt: 'Portrait of Frederick Rose', class: 'avatar') %>
             <p>Created by <a href="#">Frederick Rose</a></p>
           </div>
           <h1 class="gamma">Swim with a sea turtle</h1>
@@ -59,7 +59,7 @@
       <h2 class="comments__title">Discussion <span>3 comments</span></h2>
 
       <form class="comments__input" action="goal.html" method="post">
-        <img class="avatar" src="#images/avatar.png" alt="Portrait of logged in user">
+        <%= image_tag('avatar.png', alt: 'Portrait of Frederick Rose', class: 'avatar') %>
         <div class="input-group">
           <label class="input-group__label" for="comment">Add a comment</label>
           <textarea id="comment" class="input-group__field"></textarea>
@@ -69,21 +69,21 @@
 
       <ul class="comments__listing">
         <li class="comment">
-          <img class="avatar" src="#images/avatar.png" alt="Portrait of commenter">
+          <%= image_tag('avatar.png', alt: 'Portrait of Frederick Rose', class: 'avatar') %>
           <div class="comment__body">
             <h3 class="comment__title">Tom Jenkinson <time datetime="2017-08-28T13:48">Today</time></h3>
             <p>I've done this and it's amazing!  I'll never forget it.</p>
           </div>
         </li>
         <li class="comment">
-          <img class="avatar" src="#images/avatar.png" alt="Portrait of commenter">
+          <%= image_tag('avatar.png', alt: 'Portrait of Frederick Rose', class: 'avatar') %>
           <div class="comment__body">
             <h3 class="comment__title">Emily Walker <time datetime="2017-08-27T03:48">Yesterday</time></h3>
             <p>When do you think that you'll get a chance to do this?  Have you already planned it?</p>
           </div>
         </li>
         <li class="comment">
-          <img class="avatar" src="#images/avatar.png" alt="Portrait of commenter">
+          <%= image_tag('avatar.png', alt: 'Portrait of Frederick Rose', class: 'avatar') %>
           <div class="comment__body">
             <h3 class="comment__title">Claire Prince <time datetime="2016-06-10T09:48">10. June 2016</time></h3>
             <p>I'm thinking about this as well.</p>
