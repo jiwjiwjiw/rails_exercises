@@ -7,7 +7,7 @@ class IdeasTest < ApplicationSystemTestCase
     fill_in 'Title', with: title
     fill_in 'Done count', with: '43'
     fill_in 'Photo url', with: 'turtle-big.jpg'
-    click_on 'Create an idea'
+    click_on 'Create Idea'
     assert page.has_content? title
   end
 
