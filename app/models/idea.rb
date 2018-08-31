@@ -1,4 +1,5 @@
 class Idea < ApplicationRecord
+  has_many :comments
   validates :title, presence: true
   validates :title, length: { maximum: 75 }
 
