@@ -27,4 +27,11 @@ class IdeasController < ApplicationController
     idea.update(params)
     redirect_to(account_ideas_path)
   end
+
+  private
+
+  def idea_params
+    # params.permit(:title, :description, :photo_url, :done_count, :name_of_user)
+  end
+
 end
