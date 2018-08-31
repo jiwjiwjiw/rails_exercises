@@ -143,4 +143,16 @@ class IdeaTest < ActiveSupport::TestCase
     refute idea_1.valid?
   end
 
+  test 'Comments are ordered correctly' do
+    idea_1 = Idea.new title: 'some title'
+    idea_1.save!
+    comment_1 = Comment.new body: 'This would be great fun'
+    comment_2 = Comment.new body: "I agree! I'd like to do this as well"
+    idea_1.comments << comment_1
+    idea_1.comments << comment_2
+    idea_1.save!
+    assert_equal comment_1, idea_1.comments.first
+    assert_equal 2, idea_1.comments.length
+  end
+
 end
