@@ -90,6 +90,7 @@ class IdeaTest < ActiveSupport::TestCase
     idea_2.save!
     recent_ideas = Idea.most_recent
     assert_equal 2, recent_ideas.length
+    assert_equal idea_2.title, recent_ideas[0].title
   end
 
   test 'most_recent method when there are six records' do
@@ -114,8 +115,6 @@ class IdeaTest < ActiveSupport::TestCase
     recent_ideas = Idea.most_recent
     assert_equal 3, recent_ideas.length
     assert_equal idea_6.title, recent_ideas[0].title
-    assert_equal idea_5.title, recent_ideas[1].title
-    assert_equal idea_4.title, recent_ideas[2].title
   end
 
 end
