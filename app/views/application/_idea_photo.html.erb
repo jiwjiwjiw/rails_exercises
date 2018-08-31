@@ -1,4 +1,4 @@
-<% if(photo_url.nil?) %>
+<% if(!photo_url || (photo_url.length == 0)) %>
     <%= image_tag('http://fpoimg.com/255x170', alt: 'default image for idea card')%>
 <% else %>
   <%= image_tag(photo_url, alt: alt_text)%>
