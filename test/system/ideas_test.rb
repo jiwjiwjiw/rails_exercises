@@ -43,21 +43,6 @@ class IdeasTest < ApplicationSystemTestCase
     assert_equal current_path, edit_idea_path(idea)
   end
 
-  test 'search' do
-    idea_1 = Idea.new
-    idea_1.title = 'Climb Mont Blanc'
-    idea_1.save!
-    idea_2 = Idea.new
-    idea_2.title = 'Visit Niagara Falls'
-    idea_2.save!
-    visit '/'
-    fill_in 'q', with: 'Mont'
-    click_on 'Search', match: :first
-    assert current_path, ideas_index_path
-    assert page.has_content? 'Climb Mont Blanc'
-    refute page.has_content? 'Visit Niagara Falls'
-  end
-
   test 'that a message informs user when no idea is present' do
     visit ideas_index_path
     assert page.has_content? 'No ideas found!'
