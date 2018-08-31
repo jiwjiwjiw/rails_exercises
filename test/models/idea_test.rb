@@ -77,4 +77,45 @@ class IdeaTest < ActiveSupport::TestCase
     assert_equal(2, Idea.search('Stand').length())
   end
 
+  test 'most_recent method when there is no record' do
+    assert_empty Idea.most_recent
+  end
+
+  test 'most_recent method when there are two records' do
+    idea_1 = Idea.new
+    idea_1.title = "Idea 1"
+    idea_1.save!
+    idea_2 = Idea.new
+    idea_2.title = "Idea 2"
+    idea_2.save!
+    recent_ideas = Idea.most_recent
+    assert_equal 2, recent_ideas.length
+  end
+
+  test 'most_recent method when there are six records' do
+    idea_1 = Idea.new
+    idea_1.title = "Idea 1"
+    idea_1.save!
+    idea_2 = Idea.new
+    idea_2.title = "Idea 2"
+    idea_2.save!
+    idea_3 = Idea.new
+    idea_3.title = "Idea 3"
+    idea_3.save!
+    idea_4 = Idea.new
+    idea_4.title = "Idea 4"
+    idea_4.save!
+    idea_5 = Idea.new
+    idea_5.title = "Idea 5"
+    idea_5.save!
+    idea_6 = Idea.new
+    idea_6.title = "Idea 6"
+    idea_6.save!
+    recent_ideas = Idea.most_recent
+    assert_equal 3, recent_ideas.length
+    assert_equal idea_6.title, recent_ideas[0].title
+    assert_equal idea_5.title, recent_ideas[1].title
+    assert_equal idea_4.title, recent_ideas[2].title
+  end
+
 end
