@@ -48,18 +48,31 @@ class IdeasTest < ApplicationSystemTestCase
     assert page.has_content? 'No ideas found!'
   end
 
-  test '' do
+  test 'create idea with too long title leads to error message' do
     visit new_idea_path
     long_title = ''
     76.times do
       long_title += 'x'
     end
-  fill_in 'Title', with: long_title
-  fill_in 'Done count', with: 41
-  fill_in 'Description', with: 'Some description'
-  fill_in 'Photo url', with: 'turtle-big.jpg'
-  click_on 'Create Idea'
-  assert page.has_content? 'Title is too long'
+    fill_in 'Title', with: long_title
+    fill_in 'Done count', with: 41
+    fill_in 'Description', with: 'Some description'
+    fill_in 'Photo url', with: 'turtle-big.jpg'
+    click_on 'Create Idea'
+    assert page.has_content? 'Title is too long'
+  end
+
+  test 'edit idea with too long title leads to error message' do
+    idea = Idea.new title: 'some title', done_count: 3
+    idea.save!
+    visit edit_idea_path(idea)
+    long_title = ''
+    76.times do
+      long_title += 'x'
+    end
+    fill_in 'Title', with: long_title
+    click_on 'Update Idea'
+    assert page.has_content? 'Title is too long'
   end
 
 end
