@@ -129,4 +129,13 @@ class IdeaTest < ActiveSupport::TestCase
     assert_equal 'Idea 6', recent_ideas[0].title
   end
 
+  test 'idea model is too long' do
+    idea_1 = Idea.new
+    long_title = ''
+    76.times do
+      long_title += 'x'
+    end
+    refute idea_1.valid?
+  end
+
 end
