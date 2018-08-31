@@ -4,9 +4,9 @@ class IdeasTest < ApplicationSystemTestCase
   test 'create new idea' do
     title = 'Learn tango'
     visit new_idea_path
-    fill_in 'title', with: title
-    fill_in 'done_count', with: '43'
-    fill_in 'photo_url', with: 'turtle-big.jpg'
+    fill_in 'Title', with: title
+    fill_in 'Done count', with: '43'
+    fill_in 'Photo url', with: 'turtle-big.jpg'
     click_on 'Create an idea'
     assert page.has_content? title
   end
