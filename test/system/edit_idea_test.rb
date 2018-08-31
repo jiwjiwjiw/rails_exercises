@@ -9,9 +9,9 @@ class EditIdeaTest < ApplicationSystemTestCase
     assert idea.save
 
     visit edit_idea_path(idea)
-    fill_in 'done_count', with: 999
-    fill_in 'title', with: 'Another dummy title'
-    click_on 'Save modifications'
+    fill_in 'Done count', with: 999
+    fill_in 'Title', with: 'Another dummy title'
+    click_on 'Update Idea'
     assert page.has_content? 'Another dummy title'
     click_on 'Another dummy title'
     assert page.has_content? 'Another dummy title'

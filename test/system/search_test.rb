@@ -32,7 +32,7 @@ class SearchTest < ApplicationSystemTestCase
 
     visit root_path
     fill_in 'q', with: 'cycling'
-    click_on 'Search'
+    click_on 'Search', match: :first
     assert page.has_content? 'Go cycling across Europe'
     assert page.has_content? 'Visit Provence'
     refute page.has_content? 'Overnight hike in Switzerland'
