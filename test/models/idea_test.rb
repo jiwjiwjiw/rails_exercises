@@ -77,6 +77,26 @@ class IdeaTest < ActiveSupport::TestCase
     assert_equal(2, Idea.search('Stand').length())
   end
 
+  test 'search where only description matches' do
+    idea_1 = Idea.new
+    idea_1.title = 'Surfing in Portugal'
+    idea_1.description = 'See what Atlantic coast waves are like!'
+    idea_1.save!
+    assert_equal 1, Idea.search('coast').length
+  end
+
+  test 'search where title and description match' do
+    idea_1 = Idea.new
+    idea_1.title = 'Overnight hike in Switzerland'
+    idea_1.description = 'Stay in a Swiss refuge in the mountains.'
+    idea_1.save!
+    idea_2 = Idea.new
+    idea_2.title = 'Hike the mountains in Italy'
+    idea_2.description = 'See the Dolomites and Italian Alps.'
+    idea_2.save!
+    assert_equal 2, Idea.search('mountains').length
+  end
+
   test 'most_recent method when there is no record' do
     assert_empty Idea.most_recent
   end
