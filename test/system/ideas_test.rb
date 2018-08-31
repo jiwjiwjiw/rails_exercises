@@ -48,4 +48,18 @@ class IdeasTest < ApplicationSystemTestCase
     assert page.has_content? 'No ideas found!'
   end
 
+  test '' do
+    visit new_idea_path
+    long_title = ''
+    76.times do
+      long_title += 'x'
+    end
+  fill_in 'Title', with: long_title
+  fill_in 'Done count', with: 41
+  fill_in 'Description', with: 'Some description'
+  fill_in 'Photo url', with: 'turtle-big.jpg'
+  click_on 'Create Idea'
+  assert page.has_content? 'Title is too long'
+  end
+
 end
