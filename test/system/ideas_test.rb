@@ -30,13 +30,26 @@ class IdeasTest < ApplicationSystemTestCase
     assert page.has_content? idea3.title
   end
 
+  test 'that idea is displayed properly' do
+    idea = Idea.new
+    idea.title = 'Test title'
+    idea.done_count = 12345
+    idea.save!
+    visit(show_idea_path(idea))
+    assert page.has_content? 'Test title'
+    assert page.has_content? 12345
+    assert page.has_content? idea.created_at.strftime("%d %b '%y")
+    click_on 'Edit', match: :first
+    assert_equal current_path, edit_idea_path(idea)
+  end
+
   test 'search' do
-    idea = Idea.new
-    idea.title = 'Climb Mont Blanc'
-    idea.save!
-    idea = Idea.new
-    idea.title = 'Visit Niagara Falls'
-    idea.save!
+    idea_1 = Idea.new
+    idea_1.title = 'Climb Mont Blanc'
+    idea_1.save!
+    idea_2 = Idea.new
+    idea_2.title = 'Visit Niagara Falls'
+    idea_2.save!
     visit '/'
     fill_in 'q', with: 'Mont'
     click_on 'Search', match: :first
@@ -44,4 +57,10 @@ class IdeasTest < ApplicationSystemTestCase
     assert page.has_content? 'Climb Mont Blanc'
     refute page.has_content? 'Visit Niagara Falls'
   end
+
+  test 'that a message informs user when no idea is present' do
+    visit ideas_index_path
+    assert page.has_content? 'No ideas found!'
+  end
+
 end

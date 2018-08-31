@@ -3,17 +3,17 @@
     <h1>Results for "<%= @search_term %>"</h1>
   </div>
   <div class="content-wrapper">
-    <ul class="bare-list float-grid css-grid">
-      <% if(@ideas.any?) %>
+    <% if(@ideas.any?) %>
+      <ul class="bare-list float-grid css-grid">
         <% @ideas.each do |idea| %>
           <li>
             <%= render(partial: 'idea_card', locals: { idea: idea, editable: false }) %>
           </li>
         <% end %>
-      <% else %>
-        <h3>No ideas found!</h3>
-      <% end %>
-    </ul>
+      </ul>
+    <% else %>
+      <h3>No ideas found!</h3>
+    <% end %>
   </div>
   <div class="see-more">
     <button class="btn" type="button" data-more="true">See more</button>
