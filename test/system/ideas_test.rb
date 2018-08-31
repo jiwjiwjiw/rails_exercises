@@ -3,7 +3,7 @@ require "application_system_test_case"
 class IdeasTest < ApplicationSystemTestCase
   test 'create new idea' do
     title = 'Learn tango'
-    visit ideas_new_path
+    visit new_idea_path
     fill_in 'title', with: title
     fill_in 'done_count', with: '43'
     fill_in 'photo_url', with: 'turtle-big.jpg'
@@ -35,7 +35,7 @@ class IdeasTest < ApplicationSystemTestCase
     idea.title = 'Test title'
     idea.done_count = 12345
     idea.save!
-    visit(show_idea_path(idea))
+    visit(idea_path(idea))
     assert page.has_content? 'Test title'
     assert page.has_content? 12345
     assert page.has_content? idea.created_at.strftime("%d %b '%y")
@@ -44,7 +44,7 @@ class IdeasTest < ApplicationSystemTestCase
   end
 
   test 'that a message informs user when no idea is present' do
-    visit ideas_index_path
+    visit ideas_path
     assert page.has_content? 'No ideas found!'
   end
 

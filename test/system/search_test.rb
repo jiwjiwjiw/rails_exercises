@@ -11,7 +11,7 @@ class SearchTest < ApplicationSystemTestCase
     visit '/'
     fill_in 'q', with: 'Mont'
     click_on 'Search', match: :first
-    assert current_path, ideas_index_path
+    assert current_path, ideas_path
     assert page.has_content? 'Climb Mont Blanc'
     refute page.has_content? 'Visit Niagara Falls'
   end
