@@ -1,7 +1,7 @@
 <%= form_for(idea, html: {class: 'form--inpage'}) do |form| %>
   <div class="input-group input-group--horizontal">
     <%= form.label(:title, class: 'input-group__label') %>
-    <%= form.text_field(:title, class: 'input-group__field') %>
+    <%= form.text_field(:title, class: 'input-group__field', placeholder: 'E.g. Ride a camel') %>
   </div>
   <div class="input-group input-group--horizontal">
     <%= form.label(:done_count, class: 'input-group__label') %>
