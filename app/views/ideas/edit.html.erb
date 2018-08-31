@@ -1,18 +1,18 @@
 <main>
   <div class="content-wrapper">
     <h1>Create new idea</h1>
-    <%= form_tag(idea_path(@idea), method: :patch, class: 'form--inpage') do %>
+    <%= form_for(@idea, html: {class: 'form--inpage'}) do |form| %>
       <div class="input-group input-group--horizontal">
-        <label class="input-group__label" for="title">Title</label>
-        <%= text_field_tag('title', @idea.title, class: 'input-group__field') %>
+        <%= form.label(:title, class: 'input-group__label') %>
+        <%= form.text_field(:title, class: 'input-group__field') %>
       </div>
       <div class="input-group input-group--horizontal">
-        <label class="input-group__label" for="done_count">Done count</label>
-        <%= text_field_tag('done_count', @idea.done_count, class: 'input-group__field') %>
+        <%= form.label(:done_count, class: 'input-group__label') %>
+        <%= form.text_field(:done_count, class: 'input-group__field') %>
       </div>
       <div class="input-group input-group--horizontal">
-        <label class="input-group__label" for="photo_url">Photo URL</label>
-        <%= text_field_tag('photo_url', @idea.photo_url, class: 'input-group__field') %>
+        <%= form.label(:photo_url, class: 'input-group__label') %>
+        <%= form.text_field(:photo_url, class: 'input-group__field') %>
       </div>
       <div class="prompt">
         <a class="prompt__cancel" href="#cancel">Cancel</a>
