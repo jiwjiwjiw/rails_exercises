@@ -58,14 +58,14 @@
     <div class="comments">
       <h2 class="comments__title">Discussion <span>3 comments</span></h2>
 
-      <form class="comments__input" action="goal.html" method="post">
+      <%= form_for([@idea, @comment]) do |form| %>
         <%= image_tag('avatar.png', alt: 'Portrait of Frederick Rose', class: 'avatar') %>
         <div class="input-group">
-          <label class="input-group__label" for="comment">Add a comment</label>
-          <textarea id="comment" class="input-group__field"></textarea>
+          <%= form.label(:body, class: 'input-group__label') %>
+          <%= form.text_area(:body, class:'input-group__field') %>
         </div>
-        <button class="btn btn--primary" type="submit">Post</button>
-      </form>
+        <%=form.submit(class: "btn btn--primary") %>
+      <% end %>
 
       <ul class="comments__listing">
         <li class="comment">
