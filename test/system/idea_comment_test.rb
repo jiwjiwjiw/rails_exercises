@@ -8,5 +8,6 @@ class IdeaCommentsTest < ApplicationSystemTestCase
     fill_in 'Body', with: 'Some dummy comment'
     click_on 'Create Comment', match: :first
     assert_equal idea_path(idea), current_path
+    assert page.has_content? 'Some dummy comment'
   end
 end
