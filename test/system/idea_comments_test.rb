@@ -13,8 +13,16 @@ class IdeaCommentsTest < ApplicationSystemTestCase
     visit idea_path(idea)
     fill_in 'Add a comment', with: 'Some dummy comment'
     click_on 'Post', match: :first
-    
+
     assert_equal idea_path(idea), page.current_path
     assert page.has_content? 'Some dummy comment'
   end
+
+  test 'comments cannot be added when not logged in' do
+    idea = Idea.new title: 'some title'
+    idea.save!
+    visit idea_path(idea)
+    refute page.has_content? 'Add a comment'
+  end
+
 end
