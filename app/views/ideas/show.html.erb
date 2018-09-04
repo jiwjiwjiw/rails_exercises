@@ -21,12 +21,15 @@
               <% end %>
             </li>
             <li>
-              <button class="btn delta" type="button">
-                <svg class="icon-heart icon--sm" role="presentation">
-                  <use xlink:href="<%= asset_url("icons/icons-defs.svg" + "#pluss") %>"</use>
-                </svg>
-                Add
-              </button>
+              <%= form_tag(url: user_goals_path(@user), method: :post) do %>
+                <%= hidden_field_tag(:idea_id, @idea.id) %>
+                <%= button_tag(class: 'btn delta') do %>
+                  <svg class="icon-heart icon--sm" role="presentation">
+                    <use xlink:href="<%= asset_url("icons/icons-defs.svg" + "#pluss") %>"</use>
+                  </svg>
+                  Add goal
+                <% end %>
+              <% end %>
             </li>
           </ul>
           <div class="goal__intro">
