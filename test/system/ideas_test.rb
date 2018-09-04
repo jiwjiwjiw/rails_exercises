@@ -12,17 +12,21 @@ class IdeasTest < ApplicationSystemTestCase
   end
 
   test 'display ideas in database' do
+    user = User.new email: 'jiw@netplus.ch'
     idea1 = Idea.new( title: 'See the northern lights',
                       done_count: 3,
                       photo_url: 'http://fpoimg.com/255x170')
+    idea1.user = user
     idea1.save!
     idea2 = Idea.new( title: 'Swim with dolphins',
                       done_count: 3,
                       photo_url: 'http://fpoimg.com/255x170')
+    idea2.user = user
     idea2.save!
     idea3 = Idea.new( title: 'Shake hands with the president',
                       done_count: 3,
                       photo_url: 'http://fpoimg.com/255x170')
+    idea3.user = user
     idea3.save!
     visit account_ideas_path
     assert page.has_content? idea1.title
@@ -34,6 +38,8 @@ class IdeasTest < ApplicationSystemTestCase
     idea = Idea.new
     idea.title = 'Test title'
     idea.done_count = 12345
+    user = User.new email: 'jiw@netplus.ch'
+    idea.user = user
     idea.save!
     visit(idea_path(idea))
     assert page.has_content? 'Test title'
@@ -64,6 +70,8 @@ class IdeasTest < ApplicationSystemTestCase
 
   test 'edit idea with too long title leads to error message' do
     idea = Idea.new title: 'some title', done_count: 3
+    user = User.new email: 'jiw@netplus.ch'
+    idea.user = user
     idea.save!
     visit edit_idea_path(idea)
     long_title = ''

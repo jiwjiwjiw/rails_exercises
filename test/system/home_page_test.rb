@@ -2,9 +2,11 @@ require "application_system_test_case"
 
 class HomePageTest < ApplicationSystemTestCase
   test 'that home page displays the three most recent ideas' do
+    user = User.new email: 'jiw@netplus.ch'
     4.times do |i|
       idea = Idea.new
       idea.title = "Idea #{i+1}"
+      idea.user = user
       idea.save!
     end
 

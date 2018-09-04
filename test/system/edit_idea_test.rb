@@ -6,6 +6,8 @@ class EditIdeaTest < ApplicationSystemTestCase
     idea.title = 'Dummy title'
     idea.done_count = 12345
     idea.photo_url = 'turtle-big.jpg'
+    user = User.new email: 'jiw@netplus.ch'
+    idea.user = user
     assert idea.save
 
     visit edit_idea_path(idea)
