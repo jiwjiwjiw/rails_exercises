@@ -2,40 +2,32 @@ require 'test_helper'
 
 class IdeaTest < ActiveSupport::TestCase
   test 'the partially complete Idea created is first in the list' do
-    first_idea = Idea.new
-    first_idea.title = 'first idea'
-    user = User.new email: 'jiw@netplus.ch'
-    first_idea.user = user
+    first_idea = Idea.new title: 'first idea',
+                          user: User.new
     first_idea.save!
-    second_idea = Idea.new
-    second_idea.title = 'second idea'
-    second_idea.user = user
+    second_idea = Idea.new title: 'second idea',
+                          user: User.new
     second_idea.save!
     assert_equal(first_idea, Idea.all.first)
   end
 
     test 'the first complete Idea created is first in the list' do
-    first_idea = Idea.new
-    first_idea.title = 'Cycle the length of the United Kingdom'
-    first_idea.photo_url = 'http://mybucketlist.ch/an_image.jpg'
-    first_idea.done_count = 12
-    user = User.new email: 'jiw@netplus.ch'
-    first_idea.user = user
+    first_idea = Idea.new title: 'Cycle the length of the United Kingdom',
+                          photo_url: 'http://mybucketlist.ch/an_image.jpg',
+                          done_count: 12,
+                          user: User.new
     first_idea.save!
-    second_idea = Idea.new
-    second_idea.title = 'Visit Japan'
-    second_idea.photo_url = 'http://mybucketlist.ch/second_image.jpg'
-    second_idea.done_count = 3
-    second_idea.user = user
+    second_idea = Idea.new title: 'Visit Japan',
+                          photo_url: 'http://mybucketlist.ch/second_image.jpg',
+                          done_count: 3,
+                          user: User.new
     second_idea.save!
     assert_equal(first_idea, Idea.all.first)
   end
 
   test 'updated_at is changed after updating title' do
-    idea = Idea.new
-    idea.title = 'Visit Marrakech'
-    user = User.new email: 'jiw@netplus.ch'
-    idea.user = user
+    idea = Idea.new title: 'Visit Marrakech',
+                    user: User.new
     idea.save!
     first_updated_at = idea.updated_at
     idea.title = 'Visit the market in Marrakech'
@@ -44,11 +36,9 @@ class IdeaTest < ActiveSupport::TestCase
   end
 
   test 'updated_at is changed after updating done_count' do
-    idea = Idea.new
-    idea.title = 'some title'
-    idea.done_count = 34
-    user = User.new email: 'jiw@netplus.ch'
-    idea.user = user
+    idea = Idea.new title: 'some title',
+                    done_count: 34,
+                    user: User.new
     idea.save!
     first_updated_at = idea.updated_at
     idea.done_count = 151
@@ -57,11 +47,9 @@ class IdeaTest < ActiveSupport::TestCase
   end
 
   test 'updated_at is changed after updating photo_url' do
-    idea = Idea.new
-    idea.title = 'some idea'
-    idea.photo_url = 'turtle-big.jpg'
-    user = User.new email: 'jiw@netplus.ch'
-    idea.user = user
+    idea = Idea.new title: 'some idea',
+                    photo_url: 'turtle-big.jpg',
+                    user: User.new
     idea.save!
     first_updated_at = idea.updated_at
     idea.photo_url = 'northern-lights.jpg'
@@ -70,57 +58,45 @@ class IdeaTest < ActiveSupport::TestCase
   end
 
   test 'search with one matching result' do
-    idea = Idea.new
-    idea.title = 'Stand at the top of the Empire State Building'
-    user = User.new email: 'jiw@netplus.ch'
-    idea.user = user
+    idea = Idea.new title: 'Stand at the top of the Empire State Building',
+                    user: User.new
     idea.save!
     assert_equal(1, Idea.search('the top').length())
   end
 
   test 'search with no matching result' do
-    idea = Idea.new
-    idea.title = 'Stand at the top of the Empire State Building'
-    user = User.new email: 'jiw@netplus.ch'
-    idea.user = user
+    idea = Idea.new title: 'Stand at the top of the Empire State Building',
+                    user: User.new
     idea.save!
     assert_empty(Idea.search('snorkelling'))
   end
 
   test 'search with two matching results' do
-    idea_1 = Idea.new
-    idea_1.title = 'Stand at the top of the Empire State Building'
-    user = User.new email: 'jiw@netplus.ch'
-    idea_1.user = user
+    idea_1 = Idea.new title: 'Stand at the top of the Empire State Building',
+                    user: User.new
     idea_1.save!
-    idea_2 = Idea.new
-    idea_2.title = 'Stand on the pyramids'
-    idea_2.user = user
+    idea_2 = Idea.new title: 'Stand on the pyramids',
+                      user: User.new
     idea_2.save!
     assert_equal(2, Idea.search('Stand').length())
   end
 
   test 'search where only description matches' do
-    idea = Idea.new
-    idea.title = 'Surfing in Portugal'
-    idea.description = 'See what Atlantic coast waves are like!'
-    user = User.new email: 'jiw@netplus.ch'
-    idea.user = user
+    idea = Idea.new title: 'Surfing in Portugal',
+                    description: 'See what Atlantic coast waves are like!',
+                    user: User.new
     idea.save!
     assert_equal 1, Idea.search('coast').length
   end
 
   test 'search where title and description match' do
-    idea_1 = Idea.new
-    idea_1.title = 'Overnight hike in Switzerland'
-    idea_1.description = 'Stay in a Swiss refuge in the mountains.'
-    user = User.new email: 'jiw@netplus.ch'
-    idea_1.user = user
+    idea_1 = Idea.new title: 'Overnight hike in Switzerland',
+                      description: 'Stay in a Swiss refuge in the mountains.',
+                      user: User.new
     idea_1.save!
-    idea_2 = Idea.new
-    idea_2.title = 'Hike the mountains in Italy'
-    idea_2.description = 'See the Dolomites and Italian Alps.'
-    idea_2.user = user
+    idea_2 = Idea.new title: 'Hike the mountains in Italy',
+                      description: 'See the Dolomites and Italian Alps.',
+                      user: User.new
     idea_2.save!
     assert_equal 2, Idea.search('mountains').length
   end
@@ -130,14 +106,11 @@ class IdeaTest < ActiveSupport::TestCase
   end
 
   test 'most_recent method when there are two records' do
-    idea_1 = Idea.new
-    idea_1.title = "Idea 1"
-    user = User.new email: 'jiw@netplus.ch'
-    idea_1.user = user
+    idea_1 = Idea.new title: "Idea 1",
+                      user: User.new
     idea_1.save!
-    idea_2 = Idea.new
-    idea_2.title = "Idea 2"
-    idea_2.user = user
+    idea_2 = Idea.new title: "Idea 2",
+                      user: User.new
     idea_2.save!
     recent_ideas = Idea.most_recent
     assert_equal 2, recent_ideas.length
@@ -145,11 +118,9 @@ class IdeaTest < ActiveSupport::TestCase
   end
 
   test 'most_recent method when there are six records' do
-    user = User.new email: 'jiw@netplus.ch'
     6.times do |i|
-      idea = Idea.new
-      idea.title = "Idea #{i+1}"
-      idea.user = user
+      idea = Idea.new title: "Idea #{i+1}",
+                      user: User.new
       idea.save!
     end
 
@@ -159,31 +130,33 @@ class IdeaTest < ActiveSupport::TestCase
   end
 
   test 'idea title is too long' do
-    idea_1 = Idea.new
+    idea = Idea.new
     long_title = ''
     76.times do
       long_title += 'x'
     end
-    refute idea_1.valid?
+    idea.title = long_title
+    refute idea.valid?
   end
 
   test 'idea title is missing' do
-    idea_1 = Idea.new
-    refute idea_1.valid?
+    idea = Idea.new
+    refute idea.valid?
   end
 
   test 'Comments are ordered correctly' do
-    idea_1 = Idea.new title: 'some title'
-    user = User.new email: 'jiw@netplus.ch'
-    idea_1.user = user
-    idea_1.save!
-    comment_1 = Comment.new body: 'This would be great fun', user: User.new
-    comment_2 = Comment.new body: "I agree! I'd like to do this as well", user: User.new
-    idea_1.comments << comment_1
-    idea_1.comments << comment_2
-    idea_1.save!
-    assert_equal comment_1, idea_1.comments.first
-    assert_equal 2, idea_1.comments.length
+    idea = Idea.new title: 'some title',
+                    user: User.new
+    idea.save!
+    comment_1 = Comment.new body: 'This would be great fun',
+                            user: User.new
+    comment_2 = Comment.new body: "I agree! I'd like to do this as well",
+                            user: User.new
+    idea.comments << comment_1
+    idea.comments << comment_2
+    idea.save!
+    assert_equal comment_1, idea.comments.first
+    assert_equal 2, idea.comments.length
   end
 
 end

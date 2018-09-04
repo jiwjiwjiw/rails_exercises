@@ -2,12 +2,10 @@ require "application_system_test_case"
 
 class EditIdeaTest < ApplicationSystemTestCase
   test "that editing an idea updates the idea in idea list" do
-    idea = Idea.new
-    idea.title = 'Dummy title'
-    idea.done_count = 12345
-    idea.photo_url = 'turtle-big.jpg'
-    user = User.new email: 'jiw@netplus.ch'
-    idea.user = user
+    idea = Idea.new title: 'Dummy title',
+                    done_count: 12345,
+                    photo_url: 'turtle-big.jpg',
+                    user: User.new
     assert idea.save
 
     visit edit_idea_path(idea)
