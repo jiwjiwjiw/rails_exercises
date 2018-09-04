@@ -37,7 +37,7 @@
           <div class="goal__meta">
             <span>Created on <time datetime="2017-08-27T03:48"><%= @idea.created_at.strftime("%d %b '%y") %></time></span>
             <span><%= @idea.done_count %> have done this</span>
-            <span><a href="#comments">3 comments</a></span>
+            <span><a href="#comments"><%= @idea.comments.length %> comment<% if (@idea.comments.length > 1) %>s<% end %></a></span>
           </div>
           <ul class="tags-list">
             <li><a href="#nature">Nature</a></li>
@@ -56,7 +56,7 @@
   </div>
   <div class="content-wrapper">
     <div class="comments">
-      <h2 class="comments__title">Discussion <span>3 comments</span></h2>
+      <h2 class="comments__title">Discussion <span><%= @idea.comments.length %> comment<% if (@idea.comments.length > 1) %>s<% end %></span></h2>
 
       <%if @logged %>
         <%= form_for([@idea, @comment], html: { class: 'comments__input'}) do |form| %>
