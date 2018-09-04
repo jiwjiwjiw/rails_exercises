@@ -25,6 +25,7 @@ class IdeasController < ApplicationController
   def show
     @idea = Idea.find(params[:id])
     @comment = Comment.new
+    @logged = session[:user_id].present?
   end
 
   def update
