@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: 'home#index'
 
+  resources :users
   resources :ideas do
     resources :comments
   end
